@@ -2,25 +2,44 @@ package uz.mymax.million.data
 
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
+import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource
-import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DataSpec
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.upstream.RawResourceDataSource
 import com.google.android.exoplayer2.util.Util
+import kotlinx.android.parcel.Parcelize
 import uz.mymax.million.R
-
 
 data class Mp3Item(
     val title: String,
     val duration: String,
-    val image: Int
+    val image: Int,
+    var isPlaying : MutableLiveData<Boolean> = MutableLiveData(false),
+    var index : Int
 )
 
 object Data {
 
+    fun getTitle(window : Int) : String{
+        return getPlaylistMp3()[window].title
+    }
+
+    fun getDuration(window : Int) : String{
+        return getPlaylistMp3()[window].duration
+    }
+    fun getLargeIcon(window : Int) : Int {
+        return getPlaylistMp3()[window].image
+//        val bitmap = BitmapFactory.decodeResource(context.resources, getPlaylistMp3()[window].image)
+//        return bitmap
+
+    }
 
     fun getPlaylistMp3(): List<Mp3Item> {
 
@@ -34,6 +53,7 @@ object Data {
             R.drawable.sohibjamol_va_mahluq,
             R.drawable.vak_mak
         )
+
 
         val titles = listOf<String>(
             "Antiqa aparat",
@@ -50,11 +70,24 @@ object Data {
         val list = ArrayList<Mp3Item>()
 
         images.forEachIndexed { index, i ->
-            val mp3 = Mp3Item(titles[index], duration[index], images[index])
+            val mp3 = Mp3Item(titles[index], duration[index], images[index], index = index)
             list.add(mp3)
         }
 
         return list
+    }
+
+    fun getRawList() : List<Int>{
+        return listOf<Int>(
+            R.raw.antiqa_aparat,
+            R.raw.avtobusdagi_noqulay_holat,
+            R.raw.bizga_haligindan_bervoring,
+            R.raw.davron_kabulov_maqollar,
+            R.raw.pok_pok_rio_hasanboy,
+            R.raw.qirol_artur_parodiya,
+            R.raw.sohibjamol_va_mahluq,
+            R.raw.vak_mak
+        )
     }
 
     /**

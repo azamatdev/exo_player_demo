@@ -1,6 +1,8 @@
-<resources>
-    <string name="app_name">Million</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">Million</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="playback_channel_name">Channel name</string>
+    <!-- Notificaiton Channel -->
+    <string name="loading_dots">…</string>
 </resources>

@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/audioListDialogFragment"
-        android:name="uz.mymax.million.AudioListDialogFragment"
+        android:name="uz.mymax.million.services.AudioListDialogFragment"
         android:label="fragment_audio_list_dialog_list_dialog"
         tools:layout="@layout/fragment_audio_list_dialog_list_dialog" />
 </navigation>
