@@ -79,7 +79,7 @@ object Data {
 
     fun getRawList() : List<Int>{
         return listOf<Int>(
-            R.raw.antiqa_aparat,
+            R.raw.alifbe_bayrami,
             R.raw.avtobusdagi_noqulay_holat,
             R.raw.bizga_haligindan_bervoring,
             R.raw.davron_kabulov_maqollar,
